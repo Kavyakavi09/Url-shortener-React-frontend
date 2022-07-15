@@ -7,7 +7,7 @@ function Header() {
   const [dash, setDash] = useState(false);
   return (
     <div>
-      <nav className='navbar navbar-expand-lg navbar-light bg-light ps-3 fixed-top'>
+      <nav className='navbar navbar-expand-lg navbar-light bg-light ps-3'>
         <div className='container'>
           <span className='navbar-brand mb-0 fs-2 fw-bold'>Shortly</span>
           <button
