@@ -5,10 +5,12 @@ import fully from '../images/icon-fully-customizable.svg';
 
 function Advanced() {
   return (
-    <div className=''>
-      <div className='row'>
-        <div className='col-12 mx-auto'>
-          <h2 className='text-center fw-bold mb-3'>Advanced Statistics</h2>
+    <div className='mt-5 pt-5'>
+      <div className='row pt-5'>
+        <div className='col-12 mx-auto pt-5'>
+          <h2 className='text-center fw-bold mb-3 pt-5 pt-md-0'>
+            Advanced Statistics
+          </h2>
           <p className='text-center mb-5 text-secondary '>
             Track how your links are performing across the web <br /> with our
             advanced statistics dashboard.

@@ -34,6 +34,36 @@
   transform: translate(-50%, -50%);
 }
 
+.shortener {
+  background-color: hsl(257, 27%, 26%);
+  height: 17.188rem;
+  border-radius: 8px;
+  width: 98%;
+}
+
+.shortener img {
+  height: 17.188rem;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.shortener .form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.list {
+  list-style: none;
+}
+
+.input-box {
+  width: 550px !important;
+  border-radius: 10px;
+  outline: none;
+}
+
 @media only screen and (min-width: 320px) and (max-width: 430px) {
   .more-ft {
     font-size: 38px !important;
