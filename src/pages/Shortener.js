@@ -45,6 +45,11 @@ export default function Shortener() {
       `https://shortly-urlshorten.herokuapp.com/api/${links.shortUrl}`
     );
     setButtonText('Copied!');
+    const timer = setTimeout(() => {
+      setButtonText('Copy');
+    }, 1000);
+
+    return () => clearTimeout(timer);
   };
 
   // To load links when setting links in local storage
@@ -87,7 +92,7 @@ export default function Shortener() {
             <ul className='d-md-flex align-items-md-center list'>
               <li className='me-md-5'>
                 <a
-                  className='text-info'
+                  className='text-info link-short'
                   href={`https://shortly-urlshorten.herokuapp.com/api/${links.shortUrl}`}
                   target={'_blank'}
                   rel='noreferrer'>

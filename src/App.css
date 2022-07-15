@@ -63,6 +63,16 @@
   border-radius: 10px;
   outline: none;
 }
+.link-short {
+  text-decoration: none;
+}
+
+.noData {
+  color: #000;
+  font-size: 1.8rem;
+  text-align: center;
+  padding-top: 200px;
+}
 
 @media only screen and (min-width: 320px) and (max-width: 430px) {
   .more-ft {
