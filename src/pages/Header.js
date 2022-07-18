@@ -57,13 +57,13 @@ function Header() {
             </ul>
             <form className='d-flex'>
               <Link
-                to={'/sign-in'}
+                to={'/login'}
                 className='btn btn-outline-info login'
                 type='submit'>
                 Login
               </Link>
               <Link
-                to={'/sign-up'}
+                to={'/sign-up-activate'}
                 className='btn btn-info text-white rounded-pill signup'
                 type='submit'>
                 Sign Up

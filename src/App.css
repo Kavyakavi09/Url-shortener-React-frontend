@@ -74,6 +74,17 @@
   padding-top: 200px;
 }
 
+.bod {
+  background: #31d2f2;
+  background: linear-gradient(to right, #72c7d8, #31d2f2);
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+
 @media only screen and (min-width: 320px) and (max-width: 430px) {
   .more-ft {
     font-size: 38px !important;
