@@ -43,7 +43,7 @@ function Reset() {
           text: 'Your password reset successfully!',
           icon: 'success',
         });
-        navigate('/');
+        navigate('/login');
       } catch (error) {
         setErrorMsg(error.response.data.message);
         console.log(error);

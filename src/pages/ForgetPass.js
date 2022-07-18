@@ -33,20 +33,40 @@ function ForgotPass() {
   });
   return (
     <div>
-      {errorMsg ? (
-        <div className='alert alert-danger text-center mt-5' role='alert'>
-          {errorMsg}
+      <div className='container'>
+        <div className='row'>
+          <div className='col-5 mx-auto'>
+            {errorMsg ? (
+              <div
+                className='alert alert-danger text-center mt-5 alert-dismissible fade show'
+                role='alert'>
+                {errorMsg}
+                <button
+                  type='button'
+                  class='btn-close'
+                  data-bs-dismiss='alert'
+                  aria-label='Close'></button>
+              </div>
+            ) : (
+              ''
+            )}
+            {succMsg ? (
+              <div
+                className='alert alert-success text-center mt-5 alert-dismissible fade show'
+                role='alert'>
+                {succMsg}
+                <button
+                  type='button'
+                  class='btn-close'
+                  data-bs-dismiss='alert'
+                  aria-label='Close'></button>
+              </div>
+            ) : (
+              ''
+            )}
+          </div>
         </div>
-      ) : (
-        ''
-      )}
-      {succMsg ? (
-        <div className='alert alert-success text-center mt-5' role='alert'>
-          {succMsg}
-        </div>
-      ) : (
-        ''
-      )}
+      </div>
       <div className='container'>
         <div className='row'>
           <div className='col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto'>
