@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
@@ -7,6 +7,8 @@ import { useFormik } from 'formik';
 import axios from 'axios';
 
 function Register() {
+  const [errorMsg, setErrorMsg] = useState('');
+  const [succMsg, setSuccMs] = useState('');
   const { token } = useParams();
   let navigate = useNavigate();
   let formik = useFormik({
@@ -36,19 +38,55 @@ function Register() {
     }),
     onSubmit: async (values) => {
       try {
-        await axios.post(
+        let activate = await axios.post(
           `https://shortly-urlshorten.herokuapp.com/api/users/account-activate/${token}`,
           values
         );
+        console.log(activate);
+        setSuccMs(activate.data.msg);
         navigate('/login');
       } catch (error) {
         console.log(error);
-        alert('Something went wrong');
+        setErrorMsg(error.response.data.message);
       }
     },
   });
   return (
     <div>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-5 mx-auto'>
+            {errorMsg ? (
+              <div
+                className='alert alert-danger text-center mt-5 alert-dismissible fade show'
+                role='alert'>
+                {errorMsg}
+                <button
+                  type='button'
+                  class='btn-close'
+                  data-bs-dismiss='alert'
+                  aria-label='Close'></button>
+              </div>
+            ) : (
+              ''
+            )}
+            {succMsg ? (
+              <div
+                className='alert alert-success text-center mt-5 alert-dismissible fade show'
+                role='alert'>
+                {succMsg}
+                <button
+                  type='button'
+                  class='btn-close'
+                  data-bs-dismiss='alert'
+                  aria-label='Close'></button>
+              </div>
+            ) : (
+              ''
+            )}
+          </div>
+        </div>
+      </div>
       <div className='container'>
         <div className='row'>
           <div className='col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto'>
@@ -66,7 +104,7 @@ function Register() {
                       value={formik.values.firstname}
                       name='firstname'
                       className='form-control'
-                      id='floatingInput'
+                      id='firstname'
                       placeholder='Enter your first name'
                       style={{
                         border: formik.errors.firstname
@@ -97,7 +135,7 @@ function Register() {
                       value={formik.values.lasttname}
                       name='lastname'
                       className='form-control'
-                      id='floatingInput'
+                      id='lastname'
                       placeholder='Enter your last name'
                       style={{
                         border: formik.errors.lastname
@@ -128,7 +166,7 @@ function Register() {
                       name='email'
                       value={formik.values.email}
                       className='form-control'
-                      id='floatingInput'
+                      id='email'
                       placeholder='name@example.com'
                       style={{
                         border: formik.errors.email
@@ -157,7 +195,7 @@ function Register() {
                       value={formik.values.password}
                       name='password'
                       className='form-control'
-                      id='floatingPassword'
+                      id='password'
                       placeholder='Password'
                       style={{
                         border: formik.errors.password
