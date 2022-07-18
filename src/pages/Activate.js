@@ -36,7 +36,7 @@ function Activate() {
     onSubmit: async (values) => {
       try {
         await axios.post(
-          'https://password-reset-project.herokuapp.com/api/users/signup',
+          `https://shortly-urlshorten.herokuapp.com/api/users/signup`,
           values
         );
         navigate('/login');

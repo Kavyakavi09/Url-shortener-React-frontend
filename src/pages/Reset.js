@@ -34,7 +34,7 @@ function Reset() {
     onSubmit: async (values) => {
       try {
         let resetData = await axios.post(
-          `https://password-reset-project.herokuapp.com/api/users/reset-password/${token}`,
+          `https://shortly-urlshorten.herokuapp.com/api/users/reset-password/${token}`,
           values
         );
         setSuccMs(resetData.data.message);

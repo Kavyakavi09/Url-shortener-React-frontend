@@ -27,7 +27,7 @@ function Login() {
     onSubmit: async (values) => {
       try {
         let loginData = await axios.post(
-          'https://password-reset-project.herokuapp.com/api/users/signin',
+          'https://shortly-urlshorten.herokuapp.com/api/users/signin',
           values
         );
         window.localStorage.setItem('myapptoken', loginData.data.token);

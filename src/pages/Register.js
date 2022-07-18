@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 
 import axios from 'axios';
 
 function Register() {
+  const { token } = useParams();
   let navigate = useNavigate();
   let formik = useFormik({
     initialValues: {
@@ -36,7 +37,7 @@ function Register() {
     onSubmit: async (values) => {
       try {
         await axios.post(
-          'https://password-reset-project.herokuapp.com/api/users/signup',
+          `https://shortly-urlshorten.herokuapp.com/api/users/account-activate/${token}`,
           values
         );
         navigate('/login');

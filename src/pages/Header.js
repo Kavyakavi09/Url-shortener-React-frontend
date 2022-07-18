@@ -1,10 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 function Header() {
-  const [home, setHome] = useState(true);
-  const [dash, setDash] = useState(false);
   return (
     <div>
       <nav className='navbar navbar-expand-lg navbar-light bg-light ps-3'>
@@ -23,36 +21,24 @@ function Header() {
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
             <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
               <li className='nav-item'>
-                <Link
-                  className={`${
-                    home
-                      ? 'nav-link active fw-bold text-info'
-                      : 'nav-link text-secondary fw-normal'
-                  }`}
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? 'nav-link active text-info' : 'nav-link'
+                  }
                   aria-current='page'
-                  to={'/'}
-                  onClick={() => {
-                    setDash(false);
-                    setHome(true);
-                  }}>
+                  to={'/'}>
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li className='nav-item'>
-                <Link
-                  className={`${
-                    dash
-                      ? 'nav-link active fw-bold text-info'
-                      : 'nav-link text-secondary fw-normal'
-                  }`}
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? 'nav-link active text-info' : 'nav-link'
+                  }
                   aria-current='page'
-                  to={'/dashboard'}
-                  onClick={() => {
-                    setDash(true);
-                    setHome(false);
-                  }}>
+                  to={'/dashboard'}>
                   Dashboard
-                </Link>
+                </NavLink>
               </li>
             </ul>
             <form className='d-flex'>
