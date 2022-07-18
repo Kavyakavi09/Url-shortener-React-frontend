@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ForgotPass from './pages/ForgetPass';
 import Activate from './pages/Activate';
+import Reset from './pages/Reset';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/sign-up/:token' element={<Register />} />
           <Route path='/sign-up-activate' element={<Activate />} />
           <Route path='/forgot-password' element={<ForgotPass />} />
+          <Route path='/reset-password/:token' element={<Reset />} />
         </Routes>
       </HashRouter>
     </div>
