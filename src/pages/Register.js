@@ -3,7 +3,6 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
-import swal from 'sweetalert';
 
 import axios from 'axios';
 
@@ -52,12 +51,7 @@ function Register() {
       }
     },
   });
-  swal({
-    title: 'Welcome!',
-    text: 'Your acount has been verified!',
-    icon: 'success',
-    button: 'Aww yiss!',
-  });
+
   return (
     <div>
       <div className='container'>
