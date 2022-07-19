@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 function Header() {
@@ -41,18 +41,26 @@ function Header() {
                 </NavLink>
               </li>
             </ul>
-            <form className='d-flex'>
+            <form className='d-flex justify-content-evenly gap-2'>
               <Link
                 to={'/login'}
                 className='btn btn-outline-info login'
                 type='submit'>
-                Login
+                Sign In
               </Link>
+
               <Link
                 to={'/sign-up-activate'}
                 className='btn btn-info text-white rounded-pill signup'
                 type='submit'>
                 Sign Up
+              </Link>
+
+              <Link
+                to={'/login'}
+                className='btn btn-outline-info login'
+                type='submit'>
+                Sign Out
               </Link>
             </form>
           </div>

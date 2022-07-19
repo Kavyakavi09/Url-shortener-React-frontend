@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import bgMobile from '../images/bg-boost-mobile.svg';
 import bgDesktop from '../images/bg-boost-desktop.svg';
 
@@ -15,9 +16,9 @@ function Boost() {
           <h2 className='mb-5 text-white font-bold text-center'>
             Boost your links today
           </h2>
-          <button className='btn btn-info rounded-pill text-white'>
+          <Link to={'/login'} className='btn btn-info rounded-pill text-white'>
             Get Started
-          </button>
+          </Link>
         </div>
       </section>
     </div>

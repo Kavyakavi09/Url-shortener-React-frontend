@@ -16,7 +16,7 @@ function ShowCase() {
               </p>
               <div className='text-center text-lg-start text-md-start'>
                 <Link
-                  to={'/dashboard'}
+                  to={'/login'}
                   className='btn btn-info mt-3 text-white btn-lg rounded-pill mb-5 text-center'>
                   Get Started for Free
                 </Link>

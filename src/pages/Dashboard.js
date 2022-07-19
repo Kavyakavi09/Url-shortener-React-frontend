@@ -1,26 +1,66 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 function Dashboard() {
   const [Links, setLinks] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState('');
 
   const shortenLink = async () => {
     try {
       setLoading(true);
       let datas = await axios.get(
-        'https://shortly-urlshorten.herokuapp.com/api/shortUrl'
+        'https://shortly-urlshorten.herokuapp.com/api/shortUrl',
+        {
+          headers: {
+            Authorization: window.localStorage.getItem('myapptoken'),
+          },
+        }
       );
 
       setLinks(datas.data);
     } catch (error) {
       console.log(error);
-      setError(error);
+      setError(error.response.data.message);
     } finally {
       setLoading(false);
     }
   };
+
+  function handleDelete(id) {
+    swal({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this data!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then(async (willDelete) => {
+      if (willDelete) {
+        try {
+          await axios.delete(
+            `https://shortly-urlshorten.herokuapp.com/api/delete-url/${id}`,
+            {
+              headers: {
+                Authorization: window.localStorage.getItem('myapptoken'),
+              },
+            }
+          );
+
+          shortenLink();
+          swal('Poof! Your data has been deleted!', {
+            icon: 'success',
+          });
+        } catch (error) {
+          console.log(error);
+          setError(error.response.data.message);
+        }
+      } else {
+        swal('Your data is safe!');
+      }
+    });
+  }
 
   useEffect(() => {
     shortenLink();
@@ -30,7 +70,22 @@ function Dashboard() {
     return <p className='noData'>Loading...</p>;
   }
   if (error) {
-    return <p className='noData'>Something went wrong :(</p>;
+    return (
+      <>
+        <p className='noData'>{error}(:</p>
+        {error === 'Unauthorized' ? (
+          <p className='logerr'>
+            Please {''}
+            <Link to={'/login'} className={'btn btn-info text-white'}>
+              Login
+            </Link>{' '}
+            to continue...
+          </p>
+        ) : (
+          ''
+        )}
+      </>
+    );
   }
 
   return (
@@ -45,6 +100,7 @@ function Dashboard() {
                   <th>Short url</th>
                   <th>Click Counts</th>
                   <th>Date</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody className='text-center'>
@@ -74,6 +130,13 @@ function Dashboard() {
                         </td>
                         <td>{clickCount}</td>
                         <td>{createdAt}</td>
+                        <td>
+                          <button
+                            className='btn btn-danger btn-sm'
+                            onClick={() => handleDelete(_id)}>
+                            Delete
+                          </button>
+                        </td>
                       </tr>
                     );
                   }

@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import bgMobile from '../images/bg-shorten-mobile.svg';
 import bgDesktop from '../images/bg-shorten-desktop.svg';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 const getLocalStorage = () => {
   let links = localStorage.getItem('links');
@@ -18,23 +20,37 @@ export default function Shortener() {
   const [longUrl, setLongUrl] = useState('');
   const [links, setLinks] = useState(getLocalStorage());
   const [buttonText, setButtonText] = useState('Copy');
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (longUrl === '') {
+      swal({
+        title: 'Empty Text Box',
+        text: 'Please Insert your Url',
+        icon: 'info',
+        button: 'Ok',
+      });
+    }
 
     const shortenLink = async () => {
       try {
         let datas = await axios.post(
           'https://shortly-urlshorten.herokuapp.com/api/createUrl',
-          { longUrl }
+          { longUrl },
+          {
+            headers: {
+              Authorization: window.localStorage.getItem('myapptoken'),
+            },
+          }
         );
 
         console.log(datas.data);
-
         setLinks(datas.data);
         setLongUrl('');
       } catch (error) {
         console.log(error);
+        setErrorMsg(error.response.data.message);
       }
     };
     shortenLink();
@@ -59,6 +75,37 @@ export default function Shortener() {
 
   return (
     <div className='pt-2 pt-md-5 mb-5 mb-md-0'>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-5 mx-auto'>
+            {errorMsg ? (
+              <div
+                className='alert alert-danger text-center mt-5 alert-dismissible fade show'
+                role='alert'>
+                {errorMsg}.
+                {errorMsg === 'Unauthorized' ? (
+                  <p className=''>
+                    Please {''}
+                    <Link to={'/login'} className={'btn btn-info text-white'}>
+                      Login
+                    </Link>{' '}
+                    to continue...
+                  </p>
+                ) : (
+                  ''
+                )}
+                <button
+                  type='button'
+                  class='btn-close'
+                  data-bs-dismiss='alert'
+                  aria-label='Close'></button>
+              </div>
+            ) : (
+              ''
+            )}
+          </div>
+        </div>
+      </div>
       <section className='shortener position-relative mx-auto mb-5'>
         <picture>
           <source media='(min-width: 768px)' srcSet={bgDesktop} />

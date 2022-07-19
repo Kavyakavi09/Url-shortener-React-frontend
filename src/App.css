@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
 
-.signup {
-  margin-right: 100px !important;
-}
-
-.login {
-  margin-right: 20px !important;
-}
-
 .login:hover {
   color: #fff !important;
 }
@@ -72,6 +64,12 @@
   font-size: 1.8rem;
   text-align: center;
   padding-top: 200px;
+}
+
+.logerr {
+  color: #000;
+  font-size: 1.8rem;
+  text-align: center;
 }
 
 .bod {
