@@ -100,6 +100,7 @@ function Dashboard() {
               <table className='table table-primary table-striped table-hover'>
                 <thead className='table-dark text-center'>
                   <tr>
+                    <th>S.No</th>
                     <th>Long url</th>
                     <th>Short url</th>
                     <th>Click Counts</th>
@@ -110,9 +111,10 @@ function Dashboard() {
 
                 <tbody className='text-center'>
                   {Links.map(
-                    ({ longUrl, shortUrl, clickCount, createdAt, _id }) => {
+                    ({ longUrl, shortUrl, clickCount, createdAt, _id }, i) => {
                       return (
                         <tr key={_id}>
+                          <td>{i + 1}</td>
                           <td>
                             <a
                               href={longUrl}
