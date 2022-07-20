@@ -26,7 +26,7 @@ const PieChart = ({ count }) => {
   };
 
   return (
-    <div className='col-xl-7 col-lg-8 mx-auto mt-5'>
+    <div className='col-xl-7 col-lg-8 mx-auto'>
       <div className='card shadow mb-4'>
         {/* <!-- Card Header - Dropdown --> */}
         <div className='card-header py-3'>
