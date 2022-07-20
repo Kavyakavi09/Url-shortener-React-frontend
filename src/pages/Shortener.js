@@ -21,6 +21,7 @@ export default function Shortener() {
   const [links, setLinks] = useState(getLocalStorage());
   const [buttonText, setButtonText] = useState('Copy');
   const [errorMsg, setErrorMsg] = useState('');
+  const [unauth, setUnauth] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,7 +41,7 @@ export default function Shortener() {
           { longUrl },
           {
             headers: {
-              Authorization: window.localStorage.getItem('myapptoken'),
+              Authorization: window.localStorage.getItem('Authorization'),
             },
           }
         );
@@ -51,6 +52,7 @@ export default function Shortener() {
       } catch (error) {
         console.log(error);
         setErrorMsg(error.response.data.message);
+        setUnauth(error.response.statusText);
       }
     };
     shortenLink();
@@ -94,6 +96,24 @@ export default function Shortener() {
                 ) : (
                   ''
                 )}
+                <button
+                  type='button'
+                  class='btn-close'
+                  data-bs-dismiss='alert'
+                  aria-label='Close'></button>
+              </div>
+            ) : (
+              ''
+            )}
+            {unauth ? (
+              <div
+                className='alert alert-danger text-center mt-5 alert-dismissible fade show'
+                role='alert'>
+                Please {''}
+                <Link to={'/login'} className={'btn btn-info text-white'}>
+                  Login
+                </Link>{' '}
+                to continue...
                 <button
                   type='button'
                   class='btn-close'

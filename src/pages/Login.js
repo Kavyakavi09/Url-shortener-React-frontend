@@ -30,7 +30,7 @@ function Login() {
           'https://shortly-urlshorten.herokuapp.com/api/users/signin',
           values
         );
-        window.localStorage.setItem('myapptoken', loginData.data.token);
+        window.localStorage.setItem('Authorization', loginData.data.token);
         console.log(loginData);
         setSuccMs(loginData.data.msg);
         swal({

@@ -1,8 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 function Header() {
+  let navigate = useNavigate();
+  let handleLogout = () => {
+    window.localStorage.removeItem('Authorization');
+    navigate('/login');
+  };
   return (
     <div>
       <nav className='navbar navbar-expand-lg navbar-light bg-light ps-3'>
@@ -56,12 +61,12 @@ function Header() {
                 Sign Up
               </Link>
 
-              <Link
-                to={'/login'}
+              <button
                 className='btn btn-outline-info login'
-                type='submit'>
+                type='submit'
+                onClick={handleLogout}>
                 Sign Out
-              </Link>
+              </button>
             </form>
           </div>
         </div>
