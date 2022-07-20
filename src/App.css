@@ -104,3 +104,15 @@
     margin-left: 15px;
   }
 }
+
+@media only screen and (min-width: 300px) and (max-width: 450px) {
+  .shortener .form {
+    width: 100%;
+  }
+  .input-box {
+    width: 100% !important;
+  }
+  .mob-image {
+    width: 100% !important;
+  }
+}

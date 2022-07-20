@@ -9,7 +9,7 @@ function Boost() {
       <section className='boost position-relative'>
         <picture>
           <source media='(min-width: 768px)' srcSet={bgDesktop} />
-          <img src={bgMobile} alt='background' />
+          <img src={bgMobile} alt='background' className='mob-image' />
         </picture>
 
         <div className='d-flex align-items-center justify-content-center flex-column boost-inner'>

@@ -151,7 +151,7 @@ export default function Shortener() {
         </form>
 
         <div className='d-flex flex-column align-items-center justify-content-center bg-white text-center flex-md-row justify-content-md-between p-3 mt-3 rounded-lg-5 shadow'>
-          <article className='long url' style={{ width: '20rem' }}>
+          <article className='long url'>
             <h6 className='mb-3 mb-md-0 text-break'>{links.longUrl}</h6>
           </article>
 
