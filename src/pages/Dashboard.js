@@ -179,7 +179,8 @@ function Dashboard() {
                   <Link to={'/login'} className={'btn btn-info text-white'}>
                     Login
                   </Link>{' '}
-                  to enjoy your services.
+                  to enjoy your services. If you are logged in then proceed with
+                  create your url.
                 </div>
               </>
             )}
