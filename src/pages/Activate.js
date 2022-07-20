@@ -41,10 +41,8 @@ function Activate() {
           `https://shortly-urlshorten.herokuapp.com/api/users/signup`,
           values
         );
-        console.log(activate.data.message);
         setSuccMs(activate.data.message);
       } catch (error) {
-        console.log(error);
         setErrorMsg(error.response.data.message);
       }
     },

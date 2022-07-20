@@ -2,7 +2,6 @@ import React from 'react';
 import ShowCase from '../components/ShowCase';
 import Advanced from '../components/Advanced';
 import Boost from '../components/Boost';
-import Footer from '../components/Footer';
 import Shortener from '../pages/Shortener';
 
 function Home() {
@@ -12,7 +11,6 @@ function Home() {
       <Shortener />
       <Advanced />
       <Boost />
-      <Footer />
     </div>
   );
 }

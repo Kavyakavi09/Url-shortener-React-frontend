@@ -46,11 +46,9 @@ export default function Shortener() {
           }
         );
 
-        console.log(datas.data);
         setLinks(datas.data);
         setLongUrl('');
       } catch (error) {
-        console.log(error);
         setErrorMsg(error.response.data.message);
         setUnauth(error.response.statusText);
       }

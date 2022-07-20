@@ -11,6 +11,7 @@ import Register from './pages/Register';
 import ForgotPass from './pages/ForgetPass';
 import Activate from './pages/Activate';
 import Reset from './pages/Reset';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/forgot-password' element={<ForgotPass />} />
           <Route path='/reset-password/:token' element={<Reset />} />
         </Routes>
+        <Footer />
       </HashRouter>
     </div>
   );

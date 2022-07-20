@@ -42,11 +42,9 @@ function Register() {
           `https://shortly-urlshorten.herokuapp.com/api/users/account-activate/${token}`,
           values
         );
-        console.log(activate);
         setSuccMs(activate.data.msg);
         navigate('/login');
       } catch (error) {
-        console.log(error);
         setErrorMsg(error.response.data.message);
       }
     },

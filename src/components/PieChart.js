@@ -1,14 +1,39 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import axios from 'axios';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-const PieChart = ({ count }) => {
+const PieChart = () => {
+  const [result, setResult] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      let datas = await axios.get(
+        'https://shortly-urlshorten.herokuapp.com/api/views',
+        {
+          headers: {
+            Authorization: window.localStorage.getItem('Authorization'),
+          },
+        }
+      );
+      setResult(datas.data);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  let count = result.map(({ count }) => count);
+  let totalViews = result.map(({ totalViews }) => totalViews);
+
   if (count > 0) {
     count = count;
   } else {
     count = 1;
+    totalViews = 1;
   }
 
   const data = {
@@ -16,7 +41,7 @@ const PieChart = ({ count }) => {
     datasets: [
       {
         label: 'Revenue Sources',
-        data: [count, 7],
+        data: [count, totalViews],
         backgroundColor: ['#4E73DF', '#1CC88A'],
         borderColor: ['#FFFFFF', '#FFFFFF'],
         borderWidth: 2,

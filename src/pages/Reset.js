@@ -46,7 +46,6 @@ function Reset() {
         navigate('/login');
       } catch (error) {
         setErrorMsg(error.response.data.message);
-        console.log(error);
       }
     },
   });

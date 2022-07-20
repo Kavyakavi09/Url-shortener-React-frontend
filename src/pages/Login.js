@@ -31,7 +31,6 @@ function Login() {
           values
         );
         window.localStorage.setItem('Authorization', loginData.data.token);
-        console.log(loginData);
         setSuccMs(loginData.data.msg);
         swal({
           title: 'Welcome!',
@@ -42,7 +41,6 @@ function Login() {
         navigate('/');
       } catch (error) {
         setErrorMsg(error.response.data.message);
-        console.log(error);
       }
     },
   });

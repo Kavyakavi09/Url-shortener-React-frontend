@@ -22,7 +22,6 @@ function Dashboard() {
       );
       setLinks(datas.data);
     } catch (error) {
-      console.log(error);
       setError(error.response.data.message);
     } finally {
       setLoading(false);
@@ -53,7 +52,6 @@ function Dashboard() {
             icon: 'success',
           });
         } catch (error) {
-          console.log(error);
           setError(error.response.data.message);
         }
       } else {
@@ -91,7 +89,7 @@ function Dashboard() {
   return (
     <div className='container mb-5'>
       <div className='row pt-5'>
-        <PieChart count={Links.length} />
+        <PieChart />
       </div>
       <div className='row pt-2'>
         <div className='col-lg-10 mx-auto mt-5 col-12'>
