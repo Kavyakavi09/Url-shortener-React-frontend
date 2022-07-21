@@ -11,6 +11,16 @@ function Dashboard() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const auth = async () => {
+    let auth = localStorage.getItem('Authorization');
+
+    if (auth) {
+      return localStorage.getItem('Authorization');
+    } else {
+      return [];
+    }
+  };
+
   const shortenLink = async () => {
     try {
       setLoading(true);
@@ -18,7 +28,7 @@ function Dashboard() {
         'https://shortly-urlshorten.herokuapp.com/api/shortUrl',
         {
           headers: {
-            Authorization: window.localStorage.getItem('Authorization'),
+            Authorization: await auth(),
           },
         }
       );
@@ -175,12 +185,8 @@ function Dashboard() {
                 </div>
                 <div className='text-dark fs-5 text-center mb-5'>
                   {' '}
-                  No data found. Please{' '}
-                  <Link to={'/login'} className={'btn btn-info text-white'}>
-                    Login
-                  </Link>{' '}
-                  to enjoy your services. If you are logged in then proceed with
-                  create your url.
+                  No url created yet. Please create your url and enjoy your
+                  services.
                 </div>
               </>
             )}
