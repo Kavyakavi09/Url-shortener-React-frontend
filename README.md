@@ -2,6 +2,17 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# MERN Url shortener Application with Authentication and Authorization
+
+###[Live site](https://shortly-url-shortener-app.netlify.app/)
+
+<a href="https://ibb.co/QMsYq2y"><img src="https://i.ibb.co/m4QhYLf/url-app.png" alt="url-app" border="0"></a><br />
+
+Server run command : npm run server
+client run command : npm run start
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
