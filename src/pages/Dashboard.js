@@ -25,7 +25,7 @@ function Dashboard() {
     try {
       setLoading(true);
       let datas = await axios.get(
-        'https://shortly-urlshorten.herokuapp.com/api/shortUrl',
+        'https://shortly-qg2a.onrender.com/api/shortUrl',
         {
           headers: {
             Authorization: await auth(),
@@ -51,7 +51,7 @@ function Dashboard() {
       if (willDelete) {
         try {
           await axios.delete(
-            `https://shortly-urlshorten.herokuapp.com/api/delete-url/${id}`,
+            `https://shortly-qg2a.onrender.com/api/delete-url/${id}`,
             {
               headers: {
                 Authorization: window.localStorage.getItem('Authorization'),
@@ -142,7 +142,7 @@ function Dashboard() {
 
                             <td>
                               <a
-                                href={`https://shortly-urlshorten.herokuapp.com/api/${shortUrl}`}
+                                href={`https://shortly-qg2a.onrender.com/api/${shortUrl}`}
                                 target={'_blank'}
                                 rel='noreferrer'
                                 className='text-decoration-none'>

@@ -27,7 +27,7 @@ function Login() {
     onSubmit: async (values) => {
       try {
         let loginData = await axios.post(
-          'https://shortly-urlshorten.herokuapp.com/api/users/signin',
+          'https://shortly-qg2a.onrender.com/api/users/signin',
           values
         );
         window.localStorage.setItem('Authorization', loginData.data.token);

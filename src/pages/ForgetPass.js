@@ -21,7 +21,7 @@ function ForgotPass() {
     onSubmit: async (values) => {
       try {
         let resetData = await axios.post(
-          'https://shortly-urlshorten.herokuapp.com/api/users/forget-password',
+          'https://shortly-qg2a.onrender.com/api/users/forget-password',
           values
         );
         setSuccMs(resetData.data.message);

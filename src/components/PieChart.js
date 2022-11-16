@@ -11,7 +11,7 @@ const PieChart = () => {
   const fetchData = async () => {
     try {
       let datas = await axios.get(
-        'https://shortly-urlshorten.herokuapp.com/api/views',
+        'https://shortly-qg2a.onrender.com/api/views',
         {
           headers: {
             Authorization: window.localStorage.getItem('Authorization'),

@@ -46,7 +46,7 @@ export default function Shortener() {
     const shortenLink = async () => {
       try {
         let datas = await axios.post(
-          'https://shortly-urlshorten.herokuapp.com/api/createUrl',
+          'https://shortly-qg2a.onrender.com/api/createUrl',
           { longUrl },
           {
             headers: {
@@ -66,7 +66,7 @@ export default function Shortener() {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(
-      `https://shortly-urlshorten.herokuapp.com/api/${links.shortUrl}`
+      `https://shortly-qg2a.onrender.com/api/${links.shortUrl}`
     );
     setButtonText('Copied!');
     const timer = setTimeout(() => {
@@ -148,7 +148,7 @@ export default function Shortener() {
               <li className='me-md-5'>
                 <a
                   className='text-info link-short'
-                  href={`https://shortly-urlshorten.herokuapp.com/api/${links.shortUrl}`}
+                  href={`https://shortly-qg2a.onrender.com/api/${links.shortUrl}`}
                   target={'_blank'}
                   rel='noreferrer'>
                   {`https://shortly/${links.shortUrl}`}

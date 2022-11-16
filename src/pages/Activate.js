@@ -38,7 +38,7 @@ function Activate() {
     onSubmit: async (values) => {
       try {
         let activate = await axios.post(
-          `https://shortly-urlshorten.herokuapp.com/api/users/signup`,
+          `https://shortly-qg2a.onrender.com/api/users/signup`,
           values
         );
         setSuccMs(activate.data.message);
